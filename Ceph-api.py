@@ -50,19 +50,19 @@ class CephAPI(object):
     		except Exception as e:
     			return e
 
-   	def Delete_Ceph_Pools(self,name):
-   		'''
-		删除pool
-   		'''
-   		pools = self.Get_Ceph_Pools()
-   		if name not in pools:
-   			return "error deleting pool '%s'"%(name)
-   		else:
-   			try:
-    			self.cluster.delete_pool(name):
-    			return "pool '%s' delete successed"%(name)
-    		except Exception as e:
-    			return e
+    def Delete_Ceph_Pools(self,name):
+   	'''
+	删除pool
+   	'''
+        pools = self.Get_Ceph_Pools()
+   	if name not in pools:
+   		return "error deleting pool '%s'"%(name)
+   	else:
+   		try:
+    		self.cluster.delete_pool(name):
+    		return "pool '%s' delete successed"%(name)
+    	except Exception as e:
+    		return e
 
     def Get_Pool_FileList(self,name):
     	'''
