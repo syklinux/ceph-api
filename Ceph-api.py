@@ -103,4 +103,3 @@ class CephAPI(object):
 
 a = CephAPI('/home/ceph/ceph-cluster/ceph.conf')
 print a.Get_Pool_FileList('test')
-
