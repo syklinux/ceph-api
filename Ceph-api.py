@@ -45,7 +45,7 @@ class CephAPI(object):
     		return "error creating pool '%s'"%(name)
     	else:
     		try:
-    			self.cluster.create_pool(name):
+    			self.cluster.create_pool(name)
     			return "pool '%s' create successed"%(name)
     		except Exception as e:
     			return e
