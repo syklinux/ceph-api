@@ -26,29 +26,29 @@ class CephAPI(object):
     	
     def Get_Ceph_Stats(self):
     	'''
-		获取ceph统计数据
+	获取ceph统计数据
     	'''
     	return self.cluster.get_cluster_stats()
 
     def Get_Ceph_Pools(self):
     	'''
-		获取所有的pool
+	获取所有的pool
     	'''
     	return self.cluster.list_pools()
 
     def Creat_Ceph_Pools(self,name):
     	'''
-		新建pool
+	新建pool
     	'''
     	pools = self.Get_Ceph_Pools()
     	if name in pools:
-    		return "error creating pool '%s'"%(name)
+    	    return "error creating pool '%s'"%(name)
     	else:
-    		try:
-    			self.cluster.create_pool(name)
-    			return "pool '%s' create successed"%(name)
-    		except Exception as e:
-    			return e
+    	    try:
+    		self.cluster.create_pool(name)
+    		return "pool '%s' create successed"%(name)
+    	    except Exception as e:
+    		return e
 
     def Delete_Ceph_Pools(self,name):
    	'''
@@ -56,12 +56,12 @@ class CephAPI(object):
    	'''
         pools = self.Get_Ceph_Pools()
    	if name not in pools:
-   		return "error deleting pool '%s'"%(name)
+   	    return "error deleting pool '%s'"%(name)
    	else:
-   		try:
-    		self.cluster.delete_pool(name):
-    		return "pool '%s' delete successed"%(name)
-    	except Exception as e:
+   	    try:
+                self.cluster.delete_pool(name):
+                return "pool '%s' delete successed"%(name)
+    	    except Exception as e:
     		return e
 
     def Get_Pool_FileList(self,name):
@@ -86,9 +86,9 @@ class CephAPI(object):
     	poolname,keyname = args[0],args[1]
     	key_list = self.Get_Pool_FileList(poolname)
     	if Keyname not in key_list:
-    		return "key '%s' not created"%(Keyname)
+    	    return "key '%s' not created"%(Keyname)
     	try:
-    		ioctx = self.cluster.open_ioctx(poolname)
+    	    ioctx = self.cluster.open_ioctx(poolname)
             object_list = ioctx.list_objects()
             while True:
                 try:
@@ -98,7 +98,7 @@ class CephAPI(object):
                 except StopIteration :
                     break
         except Exception as e:
-                return e
+            return e
 
 ##测试
 a = CephAPI('/home/ceph/ceph-cluster/ceph.conf')
