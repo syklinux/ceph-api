@@ -100,6 +100,6 @@ class CephAPI(object):
         except Exception as e:
                 return e
 
-
+##测试
 a = CephAPI('/home/ceph/ceph-cluster/ceph.conf')
 print a.Get_Pool_FileList('test')
