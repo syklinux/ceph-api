@@ -83,6 +83,12 @@ class CephAPI(object):
             return e
 
     def Get_Pool_Key_Context(self,*args):
+        '''
+	获取指定pool下指定文件名的内容
+	args：
+	    pool的name
+            key的name
+    	'''
         poolname,keyname = args[0],args[1]
         key_list = self.Get_Pool_FileList(poolname)
         if Keyname not in key_list:
