@@ -88,7 +88,7 @@ class CephAPI(object):
     	if Keyname not in key_list:
     	    return "key '%s' not created"%(Keyname)
     	try:
-    	    ioctx = self.cluster.open_ioctx(poolname)
+	    ioctx = self.cluster.open_ioctx(poolname)
             object_list = ioctx.list_objects()
             while True:
                 try:
