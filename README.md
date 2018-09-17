@@ -10,6 +10,7 @@
 
 
 #### ceph-rest-api 是使用了ceph的http-api
+[](http://api.coderops.net/media/image/active/20180917.png)
 - 使用(ceph-rest-api是ceph本身就带的包，直接使用就行)
     ```
      ceph-rest-api -n client.admin
