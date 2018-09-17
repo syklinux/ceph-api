@@ -15,7 +15,7 @@ class CephAPI(object):
 
 	def postRequest(self,obj,methond='PUT',params=None,prefix='/'):
 		'''
-		数量请求
+		处理请求
 		'''
 		if params:
 			params = urllib.urlencode(params)
