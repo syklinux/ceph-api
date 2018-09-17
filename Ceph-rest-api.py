@@ -1,7 +1,7 @@
 #/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-import urllib2, urllib, json
+import urllib, json
 import requests
 import json
 import ssl
@@ -18,6 +18,8 @@ class CephAPI(object):
 		处理请求
 		'''
 		if params:
+			#### python 3需要使用urllib.parse.urlencode
+			# params = urllib.parse.urlencode(params)
 			params = urllib.urlencode(params)
 		url = self.__url + prefix + obj
 		if methond == 'GET':
@@ -26,6 +28,13 @@ class CephAPI(object):
 			content = requests.put(url,params=params)
 		return content.text
 
+	def Get_Ceph_Version(self):
+		'''
+		ceph 版本信息
+		'''
+		obj = "version"
+		content = self.postRequest(obj,methond='GET')
+		return content
 
 	def Get_Ceph_Status(self):
 		'''
@@ -73,5 +82,6 @@ class CephAPI(object):
 
 
 a = CephAPI('http://10.1.0.229:5000/api/v0.1/')
+print a.Get_Ceph_Version()
 # print a.Get_Ceph_Status()
-print a.Rename_Pool(srcpoolname='test',destpoolname='test2')
+# print a.Rename_Pool(srcpoolname='test',destpoolname='test2')
