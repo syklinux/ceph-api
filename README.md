@@ -1,4 +1,3 @@
-#### Ceph-api 是使用了rados模块写的，需要依赖服务器的ceph，
 # ceph-api
 
 ### ceph的python接口，刚开始写，慢慢更新。
