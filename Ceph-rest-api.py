@@ -8,7 +8,6 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-
 class CephAPI(object):
 	def __init__(self,url):
 		self.__url = url.rstrip('/')
@@ -86,6 +85,30 @@ class CephAPI(object):
 		content = self.postRequest(obj,params=params)
 		return content
 
+	def Tell_Osd_Log(self,pid):
+		'''
+		指定osd或pg的日志
+		'''
+		obj = "tell/{}/cluster_log".format(pid)
+		params = {'level':'error','message':'message'}
+		content = self.postRequest(obj,params=params)
+		return content
+
+	def Tell_Pg_Stats(self,pid):
+		'''
+		获取osd或者pg的状态
+		'''
+		obj = "tell/{}/dump_pg_recovery_stats".format(pid)
+		content = self.postRequest(obj,methond='GET')
+		return content
+
+	def Tell_Flush_Stats(self,pid):
+		'''
+		清洗pg的统计数据
+		'''
+		obj = "tell/{}/flush_pg_stats".format(pid)
+		content = self.postRequest(obj)
+		return content
 
 	def Get_Pool_List(self):
 		'''
@@ -118,7 +141,10 @@ class CephAPI(object):
 
 a = CephAPI('http://10.1.0.229:5000/api/v0.1/')
 # print a.Get_Ceph_Version()
+# print a.Tell_Osd_Log(pid=0)
+print a.Tell_Pg_Stats(pid=0)
 # print a.Add_auth(entity='client.test1')
 # print a.Delete_Auth(entity='client.test1')
 # print a.Get_Ceph_Status()
 # print a.Rename_Pool(srcpoolname='test',destpoolname='test2')
+# print a.Tell_Flush_Stats(pid=0)
