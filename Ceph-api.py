@@ -10,9 +10,9 @@ class CephAPI(object):
         self.cluster = self.connect()
 	
     def name(self):
-	name = "hupu"
-	db_name="hupu_image"
-	db_pass="hupu_123456"
+	name = "bbs_hupu"
+	db_name="bbs_hupu_image"
+	db_pass="bbs_hupu_123456"
 
     def connect(self):
         cluster = rados.Rados(conffile=self._conffile)
